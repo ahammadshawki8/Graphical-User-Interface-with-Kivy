@@ -1,0 +1,77 @@
+# here instead of using widgets name in the parent tag,
+# we can just use the widget itself 
+# as we haven't created any class in our python script.
+
+<FloatLayout_past>:
+    # first lets create 2 button
+    Button:
+        text: "Hello"
+    Button:
+        text: "World"
+
+# we can also use a parent tag for button,
+# then all the properties of the button parent tag,
+# will be available for other buttons.
+
+<Button_past>:
+    font_size: 40
+    color: (0.3, 0.6, 0.7, 0.6) # here the color is rgba
+    # rgb values and alpha(a) values can be 0 to 1
+
+# Now if we run that we can see that, 
+# we have a button which is covering the entire screen.
+# now we need to change the size and position of this button,
+# in previous modules we changed the size and pos of our entire GridLayout.
+# we can do that here as well, but that wont be dynamic,
+# It will cause grapical error in other devices.
+# for dynamic placement we need to use pos_hint attribute which is a dictionary.
+
+<FloatLayout_past_2>:
+    Button:
+        # pos_hint: {"x", "y", "top", "bottom", "left", "right"}
+        # all of the keys will have values from 0 to 1
+        # Note the coordinate system starts at the bottom left corner in kivy.
+        # this means bottom-left corner is (0,0)
+
+        # for now we only need 2 keys.
+        pos_hint: {"x": 0.2, "top": 0.6}
+        # top 1 means there will be no padding and 
+        # top 0.6 means there will be 0.4 padding between
+        # the top of the window and the top of the object
+        text: "Hello"
+    Button:
+        pos_hint: {"x": 0.5, "top": 0.6}
+        text: "World"
+
+
+<Button_past_2>:
+    font_size: 40
+    color: (0.3, 0.6, 0.7, 0.6)
+    # for size we can use size_hint property.
+    size_hint: (0.3, 0.1) # these two values are width and height, can be 0 to 1
+
+# if run this and resize the window we can see that none of the widgets are overlaping.
+# only the font size overlaps when we sqeeze the window too much,
+# for that we can change the font_size to 20.
+# now lets change the button properties according to the state.
+# there are 2 states, normal and down. 
+# normal is the normal version of button and 
+# down is when the button is clicked.
+<FloatLayout>:
+    Button:
+        # first we have to give the button a id
+        id: btn
+        pos_hint: {"x": 0.2, "top": 0.6}        
+        # we can change the button text using turnary operator.
+        text: "Hello" if btn.state == "normal" else "Hi"
+        # the we click the button, it will change the color.
+        # we can also change the background color.
+        background_color: (.5, 1, 1, 1) if btn.state == "normal" else (0.2,0.6,0,1)
+    Button:
+        pos_hint: {"x": 0.5, "top": 0.6}
+        text: "World"
+
+<Button>:
+    font_size: 20
+    color: (0, 0, 0, 0.6)
+    size_hint: (0.3, 0.1)
