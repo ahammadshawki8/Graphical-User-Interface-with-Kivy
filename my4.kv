@@ -1,0 +1,57 @@
+# Filename: main.kv
+
+# here we need to add the kivy version first.
+# first we have to reference MyGrid class here.
+# if we had multiple windows, then we have to reference different classes.
+# so we can use a tag which means we will work on MyGrid class.
+<MyGrid_past>:
+    # this exactly works as python indentation
+    Label:
+    # we will use Label class
+        text:"Hello World!"
+        # and we will pass text param
+
+# we can see that the widgets are at the left-corner,
+# instead of being in the middle. 
+# because these are a widgets and thse widgets have some default size and position.
+# so, we have to overwrite that properties
+# For this module, lets create our previous form.
+<MyGrid>:
+    GridLayout:
+        cols: 1
+        # Now if we want to place the form in the middle of the screen,
+        # we need to define more properties.
+        # we can use few propertieslike position, size etc.
+
+        # changing size
+        size: root.width, root.height
+        # here root widget is going to be MyGrid()
+        # and MyGrid have some default height and width which is the entire window.
+        # we can actually change the size by,
+        size: root.width-200, root.height-200
+
+        # changing the position,
+        pos: 100, 100
+        # this is the left padding and bottom padding
+
+        GridLayout:
+            cols: 2
+        
+            Label: 
+                text: "Name: "
+            TextInput:
+                multiline: False
+
+            Label: 
+                text: "Email: "
+            TextInput:
+                multiline: False
+
+            Label: 
+                text: "Message: "
+            TextInput:
+                multiline: True
+        
+        Button:
+            text: "Submit"
+

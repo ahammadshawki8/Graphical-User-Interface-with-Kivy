@@ -1,0 +1,47 @@
+# for using the values from the form, we need to set up some variables.
+# these variables represents object properties.
+
+
+<MyGrid>:
+
+    # varibales
+    name: name # here the first name is variable and the second name is id.
+    email: email
+    message: message 
+    # we can make the ids different like bubble or unicorn.
+    # for that, we need to change the ids in the textinputs.
+    # now, we need to add these ids for our textinputs.
+
+    GridLayout:
+        cols: 1
+        size: root.width-200, root.height-200
+        pos: 100, 100
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: "Name: "
+            TextInput:
+                id: name
+                multiline: False
+
+            Label:
+                text: "Email: "
+            TextInput:
+                id: email
+                multiline: False
+
+            Label:
+                text: "Message: "
+            TextInput:
+                id: message
+                multiline: True
+        
+        Button:
+            text: "Submit"
+            # here we have to set on_press attribute.
+            on_press: root.triggerprint()
+            # here we need to add root before the method name.
+            # otherwise, it wont work.
+            

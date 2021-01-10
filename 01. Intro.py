@@ -3,7 +3,7 @@
 
 # for using kivy first we need to install it using pip.
 """
-install kivy.deps.gstreamer
+pip install kivy.deps.gstreamer
 pip install kivy.deps.angle
 pip install kivy
 pip install pygame
