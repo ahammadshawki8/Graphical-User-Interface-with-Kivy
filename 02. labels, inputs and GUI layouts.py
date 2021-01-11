@@ -17,7 +17,8 @@ class MyGrid(GridLayout):
     # it have certain amount of rows and columns.
     # here we have to create an __init__() mehtod.
     def __init__(self, **kwargs):
-        # we can pass many keyword arguements.
+        # NOTE that, all of the drawing we will do in the __init__ method.
+        # here we can pass many keyword arguements.
         # now we have to manage the parameters using the default constructor.
         # for that we need to use the super() method.
         super(MyGrid, self).__init__(**kwargs)

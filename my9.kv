@@ -1,0 +1,59 @@
+# first we need to grab the window manager
+# and set which screen we will have in our application.
+
+WindowManager:
+    MainWindow:
+    SecondWindow: 
+    # we we dont need to pass any arguemnts.
+    # but we need the :
+
+# Now we will work on our windows.
+<MainWindow>:
+    name: "Main"
+    # first we have to give it a name.
+    # it is needed when we need to switch to another screen or switch back.
+
+    # Now we will create the form that we have created before,
+    GridLayout:
+        cols: 1
+        size: 200, 200
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: "Email: "
+            
+            TextInput:
+                id: email
+                multiline: False
+
+            Label:
+                text: "Password: "
+            
+            TextInput:
+                id: password
+                multiline: False
+        
+        Button:
+            text: "Submit"  
+            # here we will have a on_release event, which will lead us to the next window.
+            # we can do this by,
+            on_release: 
+                app.root.current = "Second" if password.text == root.check_pass(email.text) else None
+                # NOTE here we used =
+                # we can change the direction of the transition too.
+                root.manager.transition.direction = "left"
+
+
+         
+
+<SecondWindow>:
+    name: "Second"
+
+    # here we will create a button.
+    Button:
+        text: "Go Back"
+        on_release: 
+            app.root.current = "Main"
+            root.manager.transition.direction = "right"
